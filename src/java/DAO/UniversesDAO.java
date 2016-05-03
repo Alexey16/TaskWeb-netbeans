@@ -7,6 +7,7 @@ package DAO;
 
 import java.util.List;
 import Entity.Universes;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
@@ -19,7 +20,11 @@ public class UniversesDAO {
     }
     
     public List<Universes> findAll(){
-        return (List<Universes>) HibernateUtil.getSession().createQuery("SELECT u FROM Universes u").list();
+        
+        Query query = HibernateUtil.getSession().createQuery("SELECT u FROM Universes u");
+        List<Universes> result = (List<Universes>) query.list();
+        
+        return result;
     }
     
     public void save(Universes obj) {

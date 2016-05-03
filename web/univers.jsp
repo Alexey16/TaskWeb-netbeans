@@ -21,7 +21,7 @@
        Universes deleteUnivers = udao.getById(Integer.parseInt(delId));
        try {
            udao.delete(deleteUnivers);
-       } catch (Exception e) {
+       } catch (NullPointerException e) {
            System.err.print(e); 
        }
        
@@ -39,7 +39,7 @@
         try {
             int id = Integer.parseInt(idStr);
             univer = udao.getById(id);
-        } catch (Exception e){
+        } catch (NullPointerException e){
             System.err.print(e);
         }
     }
@@ -75,15 +75,14 @@
                    param = request.getParameter("title");
                    if (!param.isEmpty()){
                        univer.setTitle(new String(request.getParameter("title").getBytes("iso-8859-1"),"UTF-8"));
-                   }else {
+                   } else {
                        univer.setTitle("");
                        out.write("<p class = 'err'>Is not given a title</p>");
                    }
                    
                    param = request.getParameter("foundation_year");
-                   if (!param.isEmpty()){
+                   if (!param.isEmpty())
                        univer.setFoundationYear(Short.parseShort(param));
-                   }
                    
                    param = request.getParameter("type");
                    if (!param.isEmpty()){
@@ -92,11 +91,10 @@
                        univer.setType("");
                        out.write("<p class = 'err'>Is not given a type</p>");
                    }
-                   
-                   
-                    udao.save(univer);
-                    response.sendRedirect("universies.jsp");
-                    return;
+               
+                  udao.save(univer);
+                  response.sendRedirect("universies.jsp");
+                  return;
                    
                    
                 }

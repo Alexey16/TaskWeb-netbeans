@@ -7,6 +7,7 @@ package DAO;
 
 import java.util.List;
 import Entity.HeroicAbilities;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
@@ -19,7 +20,12 @@ public class HeroicAbilitiesDAO {
     }
     
     public List<HeroicAbilities> findAll() {
-        return (List<HeroicAbilities>)HibernateUtil.getSession().createQuery("SELECT ha FROM HeroicAbilities ha").list();
+    
+        Query query = HibernateUtil.getSession().createQuery("SELECT ha FROM HeroicAbilities ha");
+        List<HeroicAbilities> result = (List<HeroicAbilities>) query.list();
+        
+        return result;
+        
     }
     
     public void save(HeroicAbilities obj) {
@@ -37,9 +43,8 @@ public class HeroicAbilitiesDAO {
          HibernateUtil.closeSession();
          Session session = HibernateUtil.getSession();
          session.beginTransaction();
-         session.close();
          session.delete(obj);
-         session.getTransaction().commit(); 
+         session.getTransaction().commit();  
          
      }
      

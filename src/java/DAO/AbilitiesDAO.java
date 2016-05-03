@@ -7,6 +7,7 @@ package DAO;
 
 import Entity.Abilities;
 import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 
@@ -20,7 +21,10 @@ public class AbilitiesDAO {
     }
     
     public List<Abilities> findAll() {
-        return (List<Abilities>)HibernateUtil.getSession().createQuery("SELECT a FROM Abilities a").list();
+        Query query = HibernateUtil.getSession().createQuery("SELECT a FROM Abilities a");
+        List<Abilities> result = (List<Abilities>) query.list();
+        
+        return result;
     }
     
     

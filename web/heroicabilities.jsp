@@ -10,7 +10,7 @@
 <%@page import="DAO.HeroicAbilitiesDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%!
-    private HeroicAbilitiesDAO hadao = new HeroicAbilitiesDAO();
+    private HeroicAbilitiesDAO haDao = new HeroicAbilitiesDAO();
 %>
 <!DOCTYPE html>
 <html>
@@ -25,7 +25,7 @@
         <table>
             <tr><th>Name Hero</th><th>Ability</th><th>Specific features</th><th>Action</th></tr>
             <%
-                List<HeroicAbilities> hal = hadao.findAll();
+                List<HeroicAbilities> hal = haDao.findAll();
                 for (HeroicAbilities h : hal)
                 {
                     out.write("<tr>");

@@ -28,11 +28,11 @@
        Heroes deleteHeroes = hdao.getById(Integer.parseInt(delId));
        try {
            hdao.delete(deleteHeroes);
-       } catch (Exception e) {
-           System.err.print(e); //!!!!!!!!!!!!1
+       } catch (NullPointerException e) {
+           System.err.print(e);
        }
        
-       response.sendRedirect("");   //отправленный запрос обрабатывается браузером
+       response.sendRedirect("");
        return;
    }
 %>
@@ -46,7 +46,7 @@
         try {
             int id = Integer.parseInt(idStr);
             heroes = hdao.getById(id);
-        } catch (Exception e){
+        } catch (NullPointerException e){
             System.err.print(e);
         }
     }
@@ -82,9 +82,9 @@
                    String param;
                    
                    param = request.getParameter("age");
-                   if (!param.isEmpty()){
+                   if (!param.isEmpty())
                        heroes.setAge(Short.parseShort(param));
-                   }
+                   
                    
                    param = request.getParameter("name");
                    if (!param.isEmpty()){
@@ -98,8 +98,8 @@
                    if (!param.isEmpty()){
                        heroes.setGender(new String(request.getParameter("gender").getBytes("iso-8859-1"),"UTF-8"));
                    } else {
-                       heroes.setGender("");
-                       out.write("<p class = 'err'>Is not given a gender</p>");
+                       heroes.setName("");
+                       out.write("<p class = 'err'>Is not given a name</p>");
                    }
                    
                    param = request.getParameter("body_type");
@@ -107,7 +107,7 @@
                        heroes.setBodyType(new String(request.getParameter("body_type").getBytes("iso-8859-1"),"UTF-8"));
                    } else {
                        heroes.setBodyType("");
-                       out.write("<p class = 'err'>Is not given a body_type</p>");
+                       out.write("<p class = 'err'>Is not given a body type</p>");
                    }
                    
                    param = request.getParameter("location");
@@ -119,13 +119,13 @@
                    }
                    
                    param = request.getParameter("id_universe");
-                   if (!param.isEmpty()){
+                   if (!param.isEmpty())
                        heroes.setIdUniverse(undao.getById(Integer.parseInt(param)));
-                   }
                    
-                   hdao.save(heroes);
-                   response.sendRedirect("");
-                   return;
+                   
+                  hdao.save(heroes);
+                  response.sendRedirect("");
+                  return;
                }
             %>
         </p> 

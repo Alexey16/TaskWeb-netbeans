@@ -7,6 +7,7 @@ package DAO;
 
 import java.util.List;
 import Entity.Heroes;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
@@ -23,7 +24,11 @@ public class HeroesDAO {
      * @return
      */
     public List<Heroes> findAll() {
-        return (List<Heroes>)HibernateUtil.getSession().createQuery("SELECT h FROM Heroes h").list();
+        
+        Query query = HibernateUtil.getSession().createQuery("SELECT h FROM Heroes h");
+        List<Heroes> result = (List<Heroes>) query.list();
+        
+        return result;
     }
     
      public void save(Heroes obj) {

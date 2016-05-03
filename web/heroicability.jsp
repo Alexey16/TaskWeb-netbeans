@@ -29,7 +29,7 @@
        HeroicAbilities delHA = haDAO.getById(Integer.parseInt(delId));
        try {
            haDAO.delete(delHA);
-       } catch (Exception e) {
+       } catch (NullPointerException e) {
            System.err.print(e);
        }
        
@@ -47,7 +47,7 @@
         try {
             int id = Integer.parseInt(idStr);
             hab = haDAO.getById(id);
-        } catch (Exception e){
+        } catch (NullPointerException e){
             System.err.print(e);
         }
     }
@@ -89,25 +89,22 @@
                        hab.setSpecificFeatures(new String(request.getParameter("specific_features").getBytes("iso-8859-1"),"UTF-8"));
                    } else {
                        hab.setSpecificFeatures("");
-                       out.write("<p class = 'err'>Is not given a location</p>");
+                       out.write("<p class = 'err'>Is not given a specific features</p>");
                    }
                    
                    param = request.getParameter("id_hero");
-                   if (!param.isEmpty()){
+                   if (!param.isEmpty())
                        hab.setHeroes(hdao.getById(Integer.parseInt(param)));
-                   }
                    
                    param = request.getParameter("id_ability");
-                   if (!param.isEmpty()){
+                   if (!param.isEmpty())
                        hab.setAbilities(adao.getById(Integer.parseInt(param)));
-                   }
+                   
                    
                    haDAO.save(hab);
                    response.sendRedirect("heroicabilities.jsp");
                    return;
-                   
-
-               }
+                }
             %>
         </p>
         

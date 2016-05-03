@@ -24,7 +24,7 @@
        Abilities delAbil = adao.getById(Integer.parseInt(delId));
        try {
            adao.delete(delAbil);
-       } catch (Exception e) {
+       } catch (NullPointerException e) {
            System.err.print(e); 
        }
        
@@ -42,7 +42,7 @@
         try {
             int id = Integer.parseInt(idStr);
             ability = adao.getById(id);
-        } catch (Exception e){
+        } catch (NullPointerException e){
             System.err.print(e);
         }
     }
@@ -83,15 +83,14 @@
                    } else {
                        ability.setName("");
                        out.write("<p class = 'err'>Is not given a name</p>");
-                   }
-                   
+                   } 
                    param = request.getParameter("restrictions");
                    if (!param.isEmpty()){
                        ability.setRestrictions(new String(request.getParameter("restrictions").getBytes("iso-8859-1"),"UTF-8"));
                    } else {
                        ability.setRestrictions("");
                        out.write("<p class = 'err'>Is not given a restrictions</p>");
-                   } 
+                   }  
 
                    adao.save(ability);
                    response.sendRedirect("abilities.jsp");
