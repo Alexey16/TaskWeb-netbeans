@@ -85,19 +85,19 @@
                    String param;
                    
                    param = request.getParameter("specific_features");
-                   if (!param.isEmpty()){
+                   if (param!=null){
                        hab.setSpecificFeatures(new String(request.getParameter("specific_features").getBytes("iso-8859-1"),"UTF-8"));
                    } else {
-                       hab.setSpecificFeatures("");
+                       hab.setSpecificFeatures("No features!");
                        out.write("<p class = 'err'>Is not given a specific features</p>");
                    }
                    
                    param = request.getParameter("id_hero");
-                   if (!param.isEmpty())
+                   if (param!=null)
                        hab.setHeroes(hdao.getById(Integer.parseInt(param)));
                    
                    param = request.getParameter("id_ability");
-                   if (!param.isEmpty())
+                   if (param!=null)
                        hab.setAbilities(adao.getById(Integer.parseInt(param)));
                    
                    

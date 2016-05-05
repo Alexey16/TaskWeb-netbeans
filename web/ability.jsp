@@ -78,14 +78,14 @@
                    String param;
                    
                    param = request.getParameter("name");
-                   if (!param.isEmpty()){
+                   if (param!=null){
                        ability.setName(new String(request.getParameter("name").getBytes("iso-8859-1"),"UTF-8"));
                    } else {
-                       ability.setName("");
+                       ability.setName("Somebody enters empty name!");
                        out.write("<p class = 'err'>Is not given a name</p>");
                    } 
                    param = request.getParameter("restrictions");
-                   if (!param.isEmpty()){
+                   if (param!=null){
                        ability.setRestrictions(new String(request.getParameter("restrictions").getBytes("iso-8859-1"),"UTF-8"));
                    } else {
                        ability.setRestrictions("");

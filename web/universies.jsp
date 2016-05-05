@@ -44,7 +44,7 @@
             %>
         </table>
         <div class ="foot">
-        <a class ="home" href = "univers.jsp">New Univers</a>
+        <a class ="home" href = "univers.jsp">New Universe</a>
         <a class ="home" href = "heroeslist.jsp">A list of Hero</a>
         </div>
     </body>

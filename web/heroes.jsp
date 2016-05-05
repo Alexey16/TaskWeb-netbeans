@@ -81,45 +81,49 @@
                    
                    String param;
                    
-                   param = request.getParameter("age");
-                   if (!param.isEmpty())
+                   param = request.getParameter("");
+                   if (param!=null){
                        heroes.setAge(Short.parseShort(param));
+                   }else{
+                       heroes.setAge(Short.parseShort("15"));
+                       out.write("<p class = 'err'>Is not given a age</p>");
+                   }
                    
                    
                    param = request.getParameter("name");
-                   if (!param.isEmpty()){
+                   if (param!=null){
                        heroes.setName(new String(request.getParameter("name").getBytes("iso-8859-1"),"UTF-8"));
                    } else {
-                       heroes.setName("");
+                       heroes.setName("Somebody enters empty name!");
                        out.write("<p class = 'err'>Is not given a name</p>");
                    }
                    
                    param = request.getParameter("gender");
-                   if (!param.isEmpty()){
+                   if (param!=null){
                        heroes.setGender(new String(request.getParameter("gender").getBytes("iso-8859-1"),"UTF-8"));
                    } else {
-                       heroes.setName("");
+                       heroes.setName("Somebody enters empty gender!");
                        out.write("<p class = 'err'>Is not given a name</p>");
                    }
                    
                    param = request.getParameter("body_type");
-                   if (!param.isEmpty()){
+                   if (param!=null){
                        heroes.setBodyType(new String(request.getParameter("body_type").getBytes("iso-8859-1"),"UTF-8"));
                    } else {
-                       heroes.setBodyType("");
+                       heroes.setBodyType("Somebody enters empty type of my body!");
                        out.write("<p class = 'err'>Is not given a body type</p>");
                    }
                    
                    param = request.getParameter("location");
-                   if (!param.isEmpty()){
+                   if (param!=null){
                        heroes.setLocation(new String(request.getParameter("location").getBytes("iso-8859-1"),"UTF-8"));
                    } else {
-                       heroes.setLocation("");
+                       heroes.setLocation("I live in nigde!");
                        out.write("<p class = 'err'>Is not given a location</p>");
                    }
                    
                    param = request.getParameter("id_universe");
-                   if (!param.isEmpty())
+                   if (param!=null)
                        heroes.setIdUniverse(undao.getById(Integer.parseInt(param)));
                    
                    

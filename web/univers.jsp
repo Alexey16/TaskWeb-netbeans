@@ -73,22 +73,25 @@
                    String param;
                    
                    param = request.getParameter("title");
-                   if (!param.isEmpty()){
+                   if (param!=null){
                        univer.setTitle(new String(request.getParameter("title").getBytes("iso-8859-1"),"UTF-8"));
                    } else {
-                       univer.setTitle("");
+                       univer.setTitle("Somebody enters empty title");
                        out.write("<p class = 'err'>Is not given a title</p>");
                    }
-                   
+                   param=null;
                    param = request.getParameter("foundation_year");
-                   if (!param.isEmpty())
-                       univer.setFoundationYear(Short.parseShort(param));
-                   
-                   param = request.getParameter("type");
                    if (!param.isEmpty()){
+                       univer.setFoundationYear(Short.parseShort(param));
+                   } else {
+                       univer.setFoundationYear(Short.parseShort("2016"));
+                       out.write("<p class = 'err'>Is not given a title</p>");
+                   }
+                   param = request.getParameter("type");
+                   if (param!=null){
                        univer.setType(new String(request.getParameter("type").getBytes("iso-8859-1"),"UTF-8"));
                    } else {
-                       univer.setType("");
+                       univer.setType("Empty universe");
                        out.write("<p class = 'err'>Is not given a type</p>");
                    }
                
