@@ -4,10 +4,10 @@ img.action {
 }
 
 body {
-    background: white;
+    background: whitesmoke;
     font-family: "Segoe UI", Tahoma, Arial;
-    font-size: 130%;
-    width: 70%;
+    font-size: 80%;
+    width: 40%;
     border: 1px solid #cccccc;
     margin: auto;
 }
@@ -51,7 +51,7 @@ p.err {
 }
 
 p.msg {
-    background-color: darkseagreen;
+    background-color: darkcyan;
     border-top: 1px solid #009966;
     border-bottom: 1px solid #009966;
     text-align: center;
@@ -59,7 +59,7 @@ p.msg {
 }
 
 input, select {
-    background: white;
+    background: whitesmoke;
     border: 1px solid #cccccc;
     padding: 5px 20px;
     margin: 5px 2px;
@@ -70,7 +70,7 @@ input, select {
 
 table {
 margin: auto;
-width: 100%;
+width: 80%;
 }
 
 th, td {
@@ -97,7 +97,7 @@ input[type=submit]:hover, a.home:hover {
 }
 
 div.foot {
-    margin-top: 10px;
+    margin-top: 6px;
     text-align: center;
     padding: auto;
 }

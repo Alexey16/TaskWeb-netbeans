@@ -6,6 +6,7 @@
     <class>Entity.Abilities</class>
     <class>Entity.HeroicAbilities</class>
     <class>Entity.Heroes</class>
+    <class>entity.Taskmanager</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.password" value="root"/>
